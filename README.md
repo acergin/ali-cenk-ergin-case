@@ -130,6 +130,8 @@ The UI framework follows the Page Object Model (POM). Browser interactions are e
 
 UI and API executions are separated using tagged hooks, preventing unnecessary browser initialization during API execution.
 
+The QA jobs count on the Careers page is loaded asynchronously. The test waits until the displayed open jobs count becomes greater than zero before clicking the QA jobs CTA.
+
 ⸻
 
 API Automation

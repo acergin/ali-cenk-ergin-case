@@ -92,7 +92,8 @@ public class HomePage extends BasePage {
 
     public void acceptCookiesIfPresent() {
         try {
-            WebDriverWait shortWait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(5));
+            WebDriverWait shortWait = new WebDriverWait(Driver.getDriver(),
+                    Duration.ofSeconds(ConfigReader.getInt("shortTimeout")));
             WebElement acceptButton = shortWait.until(ExpectedConditions.elementToBeClickable(cookiesAcceptAllBtn));
             acceptButton.click();
             shortWait.until(ExpectedConditions.invisibilityOf(cookieBar));

@@ -71,10 +71,6 @@ public abstract class BasePage {
         return element.getText();
     }
 
-    protected void waitUntilTextDoesNotContain(WebElement element, String unwantedText) {
-        wait.until(driver -> !element.getText().trim().contains(unwantedText));
-    }
-
     protected void navigateBack() {
         Driver.getDriver().navigate().back();
     }
@@ -90,6 +86,12 @@ public abstract class BasePage {
     protected String getPageTitle() {
         waitForPageLoad();
         return Driver.getDriver().getTitle();
+    }
+
+    protected void waitUntilOpenJobCountChange(WebElement element) {
+        WebDriverWait longWait = new WebDriverWait(Driver.getDriver(),
+                Duration.ofSeconds(ConfigReader.getInt("jobCountTimeout")));
+        longWait.until(driver -> !element.getText().trim().contains("0 Open Positions"));
     }
 
 }

@@ -19,7 +19,7 @@ public class CareersPage extends BasePage {
     @FindBy(css = "div[data-department='Quality Assurance'] a")
     private WebElement qualityAssuranceButton;
 
-    public void openOpenRolesPage() throws InterruptedException {
+    public void openOpenRolesPage() {
         navigateTo(ConfigReader.get("openRolesUrl"));
         homePage.acceptCookiesIfPresent();
     }
@@ -29,7 +29,7 @@ public class CareersPage extends BasePage {
     }
 
     public void clickOnQualityAssuranceButton() {
-        waitUntilTextDoesNotContain(qualityAssuranceButton, "0 Open Positions");
+        waitUntilOpenJobCountChange(qualityAssuranceButton);
         click(qualityAssuranceButton);
     }
 }
