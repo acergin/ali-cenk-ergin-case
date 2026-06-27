@@ -1,32 +1,40 @@
-# Prompt Iteration 01
+# Prompt Iteration 01 - Generate Additional UI Scenario
 
 ## Goal
-Generate one additional UI test scenario for the Insider website.
+Generate one additional Selenium + Cucumber UI test scenario for the Insider One website.
 
 ## Context provided
-- Java
-- Selenium
-- Cucumber
-- AssertJ
+The project uses Java, Selenium, Cucumber, Page Object Model, and AssertJ.
+
+The existing UI tests already cover the Insider Careers / QA jobs flow. The new scenario should target the same Insider One site but should not duplicate the existing scenario.
+
+The implementation should follow the current framework structure:
 - Page Object Model
-- Existing scenario already verifies QA job listings.
+- reusable page methods
+- explicit waits
+- no Thread.sleep
+- no direct driver usage inside step definitions
 
 ## Prompt
+Generate one additional Selenium + Cucumber UI test scenario for https://insiderone.com/.
 
-Generate one additional UI automation scenario for https://useinsider.com/.
-Do not repeat the existing QA jobs scenario.
-The scenario should be meaningful, stable and suitable for Selenium automation.
-Provide only the scenario idea without implementation.
+The project uses Java, Selenium, Cucumber, Page Object Model, and AssertJ.
+
+Please suggest:
+- a Gherkin scenario
+- required page methods
+- step definitions
+
+Avoid Thread.sleep and use explicit waits.
 
 ## Output evaluation
+The AI suggested a scenario that verifies the "Get a demo" CTA in the header navigates to the demo request page.
 
-The AI suggested verifying the "Platform Tour" page opened successfully after clicking the Platform Tour button in the header.
+I accepted the scenario idea because it covers a meaningful user journey and does not duplicate the existing Careers / QA jobs scenario.
 
-I accepted this scenario because:
-- it validates another important user journey
-- it is independent from the existing Careers flow
-- it is unlikely to become flaky
+I did not accept the generated implementation as-is. The generated URL validation also relied on assumed path fragments, so I manually verified the actual navigation behavior before finalizing the assertion.
+
+I also adjusted the generated code to match the actual project structure, package names, existing BasePage methods, and Page Object conventions.
 
 ## Iteration notes
-
-Next prompt will ask for implementation using the existing Page Object framework.
+In the next iteration, I will ask the AI to refine the implementation using verified URL behavior, and stronger page validation.
